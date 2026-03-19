@@ -83,7 +83,8 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
+  /* Using specific Deep Space hex for background instead of oklch for the "Same-to-Same" look */
+  --background: 222 47% 4%; /* Equivalent to #020617 */
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -116,14 +117,51 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+/* CUSTOM PROFESSIONAL UTILITIES */
+@layer components {
+  /* Enforces pixel-perfect alignment across mobile, tablet, and desktop */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative;
+  }
+
+  /* The clean, white-to-transparent fade found on premium AI headers */
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-white to-white/60;
+  }
+
+  /* Consistent glass effect for UI elements */
+  .glass-card {
+    @apply bg-white/[0.02] border border-white/[0.08] backdrop-blur-xl rounded-2xl transition-all duration-300 hover:border-white/[0.15] hover:bg-white/[0.04];
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
+    box-sizing: border-box;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+  
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
   }
+
+  body {
+    @apply bg-[#020617] text-foreground antialiased selection:bg-blue-500/30;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Professional scrollbar for the Dark look */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-[#020617];
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  }
+}
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-b from-white via-white to-white/40;
 }
