@@ -37,6 +37,9 @@ export default function Header() {
   return (
     <>
       <style>{`
+        .hdr-logo-text { display: none; }
+        @media (min-width: 480px) { .hdr-logo-text { display: inline; } }
+
         .hdr-inner {
           width: 100%;
           max-width: 80rem;
@@ -68,6 +71,9 @@ export default function Header() {
         }
         .hdr-nav-link:hover { color: #fff; }
 
+        .hdr-get-started-text { display: none; }
+        @media (min-width: 380px) { .hdr-get-started-text { display: inline; } }
+
         .hdr-get-started {
           display: inline-flex; align-items: center;
           height: 36px; padding: 0 18px; border-radius: 9999px;
@@ -82,6 +88,9 @@ export default function Header() {
           box-shadow: 0 0 30px rgba(16,185,129,0.6);
           transform: scale(1.04);
         }
+
+        .hdr-get-started-icon { display: inline; }
+        @media (min-width: 380px) { .hdr-get-started-icon { display: none; } }
 
         .hdr-hamburger-btn {
           display: flex; align-items: center; justify-content: center;
@@ -134,7 +143,7 @@ export default function Header() {
               onMouseEnter={e => e.currentTarget.style.transform = "scale(1.08)"}
               onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
             />
-            <span style={{ fontSize: "1rem", fontWeight: 800, letterSpacing: "-0.02em", color: "#f1f5f9", whiteSpace: "nowrap" }}>
+            <span className="hdr-logo-text" style={{ fontSize: "1rem", fontWeight: 800, letterSpacing: "-0.02em", color: "#f1f5f9", whiteSpace: "nowrap" }}>
               Draft <span style={{ color: "#10b981" }}>AI</span> Solution
             </span>
           </Link>
@@ -154,7 +163,8 @@ export default function Header() {
               Log in
             </a>
             <a href="#contact" className="hdr-get-started">
-              Get Started
+              <span className="hdr-get-started-text">Get Started</span>
+              <span className="hdr-get-started-icon">→</span>
             </a>
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
