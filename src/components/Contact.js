@@ -11,7 +11,7 @@ import {
 //  Get it free at sheetdb.io — connect your Google Sheet
 //  Sheet columns should be: Name, Email, Company, Service, Budget, Message, Date
 // ─────────────────────────────────────────────────────────
-const SHEETDB_API_URL = "YOUR_SHEETDB_API_URL";
+const SHEETDB_API_URL = process.env.NEXT_PUBLIC_SHEETDB_API_URL;
 
 const services = [
   { label: "AI Strategy & Roadmapping", icon: Cpu,    accent: "#10b981" },
